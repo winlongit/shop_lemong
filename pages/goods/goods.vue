@@ -8,6 +8,7 @@
 				<view class="middle"></view>
 				<view class="icon-btn">
 					<view class="icon tongzhi" @tap="toMsg"></view>
+					<!-- 加入购物车 -->
 					<view class="icon cart" @tap="joinCart"></view>
 				</view>
 			</view>
@@ -19,6 +20,7 @@
 				</view>
 				<view class="icon-btn">
 					<view class="icon tongzhi" @tap="toMsg"></view>
+					<!-- 加入购物车 -->
 					<view class="icon cart" @tap="joinCart"></view>
 				</view>
 			</view>
@@ -182,8 +184,13 @@
 		<!-- 详情 -->
 		<view class="description">
 			<view class="title">———— 商品详情 ————</view>
-			<view class="content"><rich-text :nodes="descriptionStr"></rich-text></view>
+			<!-- <view class="content"><rich-text :nodes="descriptionStr"></rich-text></view> -->
+			<view class="content">
+				<image v-for="(img,index) in descriptionStrImgs" :key="index" :src="img" mode="widthFix"/>
+			</view>
 		</view>
+		<!-- 占位 , 底部菜单-->
+		<view class="place"></view>
 	</view>
 </template>
 
@@ -202,10 +209,8 @@ export default {
 			// #endif
 			//轮播主图数据
 			swiperList: [
-				{ id: 1, img: 'https://ae01.alicdn.com/kf/HTB1Mj7iTmzqK1RjSZFjq6zlCFXaP.jpg' },
-				{ id: 2, img: 'https://ae01.alicdn.com/kf/HTB1fbseTmzqK1RjSZFLq6An2XXaL.jpg' },
-				{ id: 3, img: 'https://ae01.alicdn.com/kf/HTB1dPUMThnaK1RjSZFtq6zC2VXa0.jpg' },
-				{ id: 4, img: 'https://ae01.alicdn.com/kf/HTB1OHZrTXzqK1RjSZFvq6AB7VXaw.jpg' }
+				{ id: 1, img: 'http://tva1.sinaimg.cn/large/007X8olVly1g78pqzzzkrj30m80m8abl.jpg' },
+				{ id: 2, img: 'http://tva1.sinaimg.cn/large/007X8olVly1g78pwuktq1j30m80m8gn9.jpg' },
 			],
 			//轮播图下标
 			currentSwiper: 0,
@@ -217,15 +222,17 @@ export default {
 			// 商品信息
 			goodsData:{
 				id:1,
-				name:"商品标题商品标题商品标题商品标题商品标题商品标题商品标题商品标题商品标题",
-				price:"127.00",
+				name:"美容美白基因检测",
+				price:"00.10",
 				number:1,
 				service:[
 					{name:"正品保证",description:"此商品官方保证为正品"},
 					{name:"极速退款",description:"此商品享受退货极速退款服务"},
 					{name:"7天退换",description:"此商品享受7天无理由退换服务"}
 				],
-				spec:["XS","S","M","L","XL","XXL"],
+				// 规格,型号
+				spec:["100ml","110ml",],
+				// 评论
 				comment:{
 					number:102,
 					userface:'../../static/img/face.jpg',
@@ -236,7 +243,8 @@ export default {
 			selectSpec:null,//选中规格
 			isKeep:false,//收藏
 			//商品描述html
-			descriptionStr:'<div style="text-align:center;"><img width="100%" src="https://ae01.alicdn.com/kf/HTB1t0fUl_Zmx1VjSZFGq6yx2XXa5.jpg"/><img width="100%" src="https://ae01.alicdn.com/kf/HTB1LzkjThTpK1RjSZFKq6y2wXXaT.jpg"/><img width="100%" src="https://ae01.alicdn.com/kf/HTB18dkiTbvpK1RjSZPiq6zmwXXa8.jpg"/></div>'
+			descriptionStrImgs:["http://tva1.sinaimg.cn/large/007X8olVly1g78pqzzzkrj30m80m8abl.jpg","http://tva1.sinaimg.cn/large/007X8olVly1g78psfbm39j30m80tvdho.jpg","http://tva1.sinaimg.cn/large/007X8olVly1g78pt383zqj30ka0mxjs7.jpg","http://tva1.sinaimg.cn/large/007X8olVly1g78ptix6smj30m80yg413.jpg","http://tva1.sinaimg.cn/large/007X8olVly1g78pugzt23j30m80jp75b.jpg","http://tva1.sinaimg.cn/large/007X8olVly1g78pusgzjnj30m815iadk.jpg"],
+			descriptionStr:'<div style="text-align:center;font-size:0px"><img width="100%" src="http://tva1.sinaimg.cn/large/007X8olVly1g78pqzzzkrj30m80m8abl.jpg"/><img width="100%" src="http://tva1.sinaimg.cn/large/007X8olVly1g78psfbm39j30m80tvdho.jpg"/><img width="100%" src="http://tva1.sinaimg.cn/large/007X8olVly1g78pt383zqj30ka0mxjs7.jpg"/><img width="100%" src="http://tva1.sinaimg.cn/large/007X8olVly1g78ptix6smj30m80yg413.jpg"/><img width="100%" src="http://tva1.sinaimg.cn/large/007X8olVly1g78pugzt23j30m80jp75b.jpg"/><img width="100%" src="http://tva1.sinaimg.cn/large/007X8olVly1g78pusgzjnj30m815iadk.jpg"/></div>'
 		};
 	},
 	onLoad(option) {
@@ -276,15 +284,17 @@ export default {
 		},
 		//消息列表
 		toMsg(){
-			uni.navigateTo({
-				url:'../msg/msg'
-			})
+			uni.showToast({ title: '后期加入客服功能' });
+			// uni.navigateTo({
+			// 	url:'../msg/msg'
+			// })
 		},
 		// 客服
 		toChat(){
-			uni.navigateTo({
-				url:"../msg/chat/chat?name=客服008"
-			})
+			uni.showToast({ title: '后期加入客服功能' });
+			// uni.navigateTo({
+			// 	url:"../msg/chat/chat?name=客服008"
+			// })
 		},
 		// 分享
 		share(){
@@ -299,6 +309,7 @@ export default {
 		//收藏
 		keep(){
 			this.isKeep = this.isKeep?false:true;
+			uni.showToast({ title: '后台需要完善收藏功能' });
 		},
 		// 加入购物车
 		joinCart(){
@@ -327,7 +338,7 @@ export default {
 		//跳转确认订单页面
 		toConfirmation(){
 			let tmpList=[];
-			let goods = {id:this.goodsData.id,img:'../../static/img/goods/p1.jpg',name:this.goodsData.name,spec:'规格:'+this.goodsData.spec[this.selectSpec],price:this.goodsData.price,number:this.goodsData.number};
+			let goods = {id:this.goodsData.id,img:'../../static/img/goods/pp1.jpg',name:this.goodsData.name,spec:'规格:'+this.goodsData.spec[this.selectSpec],price:this.goodsData.price,number:this.goodsData.number};
 			tmpList.push(goods);
 			uni.setStorage({
 				key:'buylist',
@@ -742,6 +753,12 @@ page {
 		font-size: 26upx;
 		color: #999;
 	}
+	.content {
+		width: 100%;
+		text-align:center;
+		font-size:0px;
+		padding: 0 0;
+	}
 }
 .footer {
 	position: fixed;
@@ -957,6 +974,12 @@ page {
 		
 	}
 }
+.place{
+		
+		background-color: #ffffff;
+		height: 100upx;
+
+	}
 .share{
 	display: none;
 	&.show {

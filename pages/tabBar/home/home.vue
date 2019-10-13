@@ -44,7 +44,7 @@
 				</view>
 			</view>
 		</view>
-		<!-- 分类列表 -->
+		<!-- 分类列表 带图标的分类-->
 		<view class="category-list">
 			<view
 				class="category"
@@ -57,9 +57,9 @@
 			</view>
 		</view>
 		<!-- 广告图 -->
-		<view class="banner"><image src="/static/img/banner.jpg"></image></view>
-		<!-- 活动区 -->
-		<view class="promotion">
+		<!-- <view class="banner"><image src="/static/img/banner.jpg"></image></view> -->
+		<!-- 活动区 优惠专区-->
+<!-- 		<view class="promotion">
 			<view class="text">优惠专区</view>
 			<view class="list">
 				<view
@@ -85,8 +85,8 @@
 					<view class="right"><image :src="row.img"></image></view>
 				</view>
 			</view>
-		</view>
-		<!-- 商品列表 -->
+		</view> -->
+		<!-- 商品列表 猜你喜欢-->
 		<view class="goods-list">
 			<view class="title">
 				<image src="/static/img/hua.png"></image>
@@ -116,7 +116,7 @@
 <script>
 var ttt = 0;
 //高德SDK
-import amap from '@/common/SDK/amap-wx.js';
+// import amap from '@/common/SDK/amap-wx.js';
 export default {
 	data() {
 		return {
@@ -130,94 +130,53 @@ export default {
 			currentSwiper: 0,
 			// 轮播图片
 			swiperList: [
-				{ id: 1, src: 'url1', img: '/static/img/1.jpg' },
-				{ id: 2, src: 'url2', img: '/static/img/2.jpg' },
-				{ id: 3, src: 'url3', img: '/static/img/3.jpg' }
+				{ id: 1, src: 'url1', img: 'http://tva1.sinaimg.cn/large/007X8olVly1g78q4whwhgj30ku06yq49.jpg' },
+				{ id: 2, src: 'url2', img: 'http://tva1.sinaimg.cn/large/007X8olVly1g78q5211efj30ku06y74m.jpg' },
+				{ id: 3, src: 'url3', img: 'http://tva1.sinaimg.cn/large/007X8olVly1g78q58pot4j30ku06yjrz.jpg' }
 			],
 			// 分类菜单
 			categoryList: [
-				{ id: 1, name: '办公', img: '/static/img/category/1.png' },
-				{ id: 2, name: '家电', img: '/static/img/category/2.png' },
-				{ id: 3, name: '服饰', img: '/static/img/category/3.png' },
-				{ id: 4, name: '日用', img: '/static/img/category/4.png' },
-				{ id: 5, name: '蔬果', img: '/static/img/category/5.png' },
-				{ id: 6, name: '运动', img: '/static/img/category/6.png' },
-				{ id: 7, name: '书籍', img: '/static/img/category/7.png' },
-				{ id: 8, name: '文具', img: '/static/img/category/8.png' }
+				{ id: 1, name: '减肥', img: '/static/img/category/1.png' },
+				{ id: 2, name: '塑身', img: '/static/img/category/2.png' },
+				{ id: 3, name: '美容', img: '/static/img/category/3.png' },
+				{ id: 4, name: '护肤', img: '/static/img/category/4.png' },
+				{ id: 5, name: '基因检测', img: '/static/img/category/5.png' },
+				{ id: 6, name: '保健', img: '/static/img/category/6.png' },
+				{ id: 7, name: '养身', img: '/static/img/category/7.png' },
+				{ id: 8, name: '燕窝', img: '/static/img/category/8.png' }
 			],
 			Promotion: [],
 			//猜你喜欢列表
 			productList: [
 				{
-					goods_id: 0,
-					img: '/static/img/goods/p1.jpg',
-					name: '商品名称商品名称商品名称商品名称商品名称',
-					price: '￥168',
-					slogan: '1235人付款'
-				},
-				{
 					goods_id: 1,
-					img: '/static/img/goods/p2.jpg',
-					name: '商品名称商品名称商品名称商品名称商品名称',
-					price: '￥168',
-					slogan: '1235人付款'
+					img: '/static/img/goods/pp1.jpg',
+					name: '美容美白基因检测',
+					price: '￥0.01',
+					slogan: '12356人付款'
 				},
 				{
 					goods_id: 2,
-					img: '/static/img/goods/p3.jpg',
-					name: '商品名称商品名称商品名称商品名称商品名称',
-					price: '￥168',
-					slogan: '1235人付款'
+					img: '/static/img/goods/pp2.jpg',
+					name: '百年宫燕即食燕窝',
+					price: '￥0.01',
+					slogan: '123人付款'
 				},
 				{
 					goods_id: 3,
-					img: '/static/img/goods/p4.jpg',
-					name: '商品名称商品名称商品名称商品名称商品名称',
-					price: '￥168',
-					slogan: '1235人付款'
+					img: '/static/img/goods/pp3.jpg',
+					name: '仁医师马油酵素面霜100ml',
+					price: '￥1688',
+					slogan: '1868人付款'
 				},
 				{
 					goods_id: 4,
-					img: '/static/img/goods/p5.jpg',
-					name: '商品名称商品名称商品名称商品名称商品名称',
+					img: '/static/img/goods/pp4.jpg',
+					name: '运动卫衣',
 					price: '￥168',
 					slogan: '1235人付款'
 				},
-				{
-					goods_id: 5,
-					img: '/static/img/goods/p6.jpg',
-					name: '商品名称商品名称商品名称商品名称商品名称',
-					price: '￥168',
-					slogan: '1235人付款'
-				},
-				{
-					goods_id: 6,
-					img: '/static/img/goods/p7.jpg',
-					name: '商品名称商品名称商品名称商品名称商品名称',
-					price: '￥168',
-					slogan: '1235人付款'
-				},
-				{
-					goods_id: 7,
-					img: '/static/img/goods/p8.jpg',
-					name: '商品名称商品名称商品名称商品名称商品名称',
-					price: '￥168',
-					slogan: '1235人付款'
-				},
-				{
-					goods_id: 8,
-					img: '/static/img/goods/p9.jpg',
-					name: '商品名称商品名称商品名称商品名称商品名称',
-					price: '￥168',
-					slogan: '1235人付款'
-				},
-				{
-					goods_id: 9,
-					img: '/static/img/goods/p10.jpg',
-					name: '商品名称商品名称商品名称商品名称商品名称',
-					price: '￥168',
-					slogan: '1235人付款'
-				}
+
 			],
 			loadingText: '正在加载...'
 		};
@@ -238,18 +197,18 @@ export default {
 	onReachBottom() {
 		uni.showToast({ title: '触发上拉加载' });
 		let len = this.productList.length;
-		if (len >= 40) {
+		if (len >= 4) {
 			this.loadingText = '到底了';
 			return false;
 		}
 		// 演示,随机加入商品,生成环境请替换为ajax请求
 		let end_goods_id = this.productList[len - 1].goods_id;
-		for (let i = 1; i <= 10; i++) {
+		for (let i = 1; i <= 4; i++) {
 			let goods_id = end_goods_id + i;
 			let p = {
 				goods_id: goods_id,
 				img:
-					'/static/img/goods/p' + (goods_id % 10 == 0 ? 10 : goods_id % 10) + '.jpg',
+					'/static/img/goods/pp' + (goods_id % 4 == 0 ? 4 : goods_id % 4) + '.jpg',
 				name: '商品名称商品名称商品名称商品名称商品名称',
 				price: '￥168',
 				slogan: '1235人付款'
@@ -270,23 +229,23 @@ export default {
 		this.showHeader = false;
 		this.statusHeight = plus.navigator.getStatusbarHeight();
 		// #endif
-		this.amapPlugin = new amap.AMapWX({
-			//高德地图KEY，随时失效，请务必替换为自己的KEY，参考：http://ask.dcloud.net.cn/article/35070
-			key: '7c235a9ac4e25e482614c6b8eac6fd8e'
-		});
+		// this.amapPlugin = new amap.AMapWX({
+		// 	//高德地图KEY，随时失效，请务必替换为自己的KEY，参考：http://ask.dcloud.net.cn/article/35070
+		// 	key: '7c235a9ac4e25e482614c6b8eac6fd8e'
+		// });
 		//定位地址
-		this.amapPlugin.getRegeo({
-			success: data => {
-				this.city = data[0].regeocodeData.addressComponent.city.replace(/市/g, ''); //把"市"去掉
-				// #ifdef APP-PLUS
-				this.nVueTitle.postMessage({type: 'location',city:this.city});
-				// #endif
-			}
-		});
+		// this.amapPlugin.getRegeo({
+		// 	success: data => {
+		// 		this.city = data[0].regeocodeData.addressComponent.city.replace(/市/g, ''); //把"市"去掉
+		// 		// #ifdef APP-PLUS
+		// 		this.nVueTitle.postMessage({type: 'location',city:this.city});
+		// 		// #endif
+		// 	}
+		// });
 		//开启定时器
-		this.Timer();
+		// this.Timer();
 		//加载活动专区
-		this.loadPromotion();
+		// this.loadPromotion();
 	},
 	methods: {
 		//加载Promotion 并设定倒计时,,实际应用中应该是ajax加载此数据。
@@ -380,13 +339,14 @@ export default {
 		},
 		//消息列表
 		toMsg(){
-			uni.navigateTo({
-				url:'../../msg/msg'
-			})
+			uni.showToast({ title: '后期加入客服功能' });
+			// uni.navigateTo({
+				// url:'../../msg/msg'
+			// })
 		},
 		//搜索跳转
 		toSearch() {
-			uni.showToast({ title: '建议跳转到新页面做搜索功能' });
+			uni.showToast({ title: '后期加入搜索功能' });
 		},
 		//轮播图跳转
 		toSwiper(e) {

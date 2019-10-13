@@ -1,7 +1,7 @@
 <template>
 	<view>
 		<view v-if="showHeader" class="status" :style="{position:headerPosition,top:statusTop}"></view>
-		<view v-if="showHeader" class="header" :style="{position:headerPosition,top:headerTop}">
+<!-- 		<view v-if="showHeader" class="header" :style="{position:headerPosition,top:headerTop}">
 			<view class="addr"></view>
 			<view class="input-box">
 				
@@ -10,9 +10,9 @@
 				<view class="icon tongzhi" @tap="toMsg"></view>
 				<view class="icon setting" @tap="toSetting"></view>
 			</view>
-		</view>
+		</view> -->
 		<!-- 占位 -->
-		<view v-if="showHeader" class="place"></view>
+		<!-- <view v-if="showHeader" class="place"></view> -->
 		<!-- 用户信息 -->
 		<view class="user">
 			<!-- 头像 -->
@@ -24,6 +24,7 @@
 				<view class="username" @tap="toLogin">{{user.username}}</view>
 				<view class="signature" @tap="toSetting">{{user.signature}}</view>
 			</view>
+			<view class="icon setting" @tap="toSetting"></view>
 			<!-- 二维码按钮 -->
 			<view class="erweima" @tap="toMyQR">
 				<view class="icon qr"></view>
@@ -102,9 +103,9 @@
 				showHeader:true,
 				//个人信息,
 				user:{
-					username:'游客1002',
+					username:'兜兜',
 					face:'/static/img/face.jpg',
-					signature:'点击昵称跳转登录/注册页',
+					signature:'开心换购健康',
 					integral:0,
 					balance:0,
 					envelope:0
@@ -120,14 +121,14 @@
 				// 工具栏列表
 				mytoolbarList:[
 					{url:'../../user/keep/keep',text:'我的收藏',img:'/static/img/user/point.png'},
-					{url:'../../user/coupon/coupon',text:'优惠券',img:'/static/img/user/quan.png'}, 
-					{url:'',text:'新客豪礼',img:'/static/img/user/renw.png'},
-					{url:'',text:'领红包',img:'/static/img/user/momey.png'},
+					// {url:'../../user/coupon/coupon',text:'优惠券',img:'/static/img/user/quan.png'}, 
+					// {url:'',text:'新客豪礼',img:'/static/img/user/renw.png'},
+					// {url:'',text:'领红包',img:'/static/img/user/momey.png'},
 					
 					{url:'../../user/address/address',text:'收货地址',img:'/static/img/user/addr.png'},
-					{url:'',text:'账户安全',img:'/static/img/user/security.png'},
-					{url:'',text:'银行卡',img:'/static/img/user/bank.png'},
-					{url:'',text:'抽奖',img:'/static/img/user/choujiang.png'},
+					// {url:'',text:'账户安全',img:'/static/img/user/security.png'},
+					// {url:'',text:'银行卡',img:'/static/img/user/bank.png'},
+					// {url:'',text:'抽奖',img:'/static/img/user/choujiang.png'},
 					// {text:'客服',img:'/static/img/user/kefu.png'},
 					// {text:'签到',img:'/static/img/user/mingxi.png'}
 					
@@ -203,10 +204,10 @@
 				})
 			},
 			toLogin(){
-				uni.showToast({title: '请登录',icon:"none"});
-				uni.navigateTo({
-					url:'../../login/login'
-				})
+				uni.showToast({title: '跳转微信授权登录',icon:"none"});
+				// uni.navigateTo({
+				// 	url:'../../login/login'
+				// })
 				this.isfirst = false;
 			},
 			isLogin(){

@@ -1,6 +1,6 @@
 <template>
 	<view>
-		<!-- 状态栏 -->
+		<!-- 状态栏 定位+搜索+消息-->
 		<view class="status" :style="{position:headerPosition}"></view>
         <view class="header" :style="{position:headerPosition}">
 			<view class="addr"><view class="icon location"></view>{{city}}</view>
@@ -44,7 +44,7 @@
 </template>
 <script>
 	//高德SDK
-	import amap from '@/common/SDK/amap-wx.js';
+	// import amap from '@/common/SDK/amap-wx.js';
 	export default {
 		data() {
 			return {
@@ -53,42 +53,41 @@
 				city:"北京",
 				//分类列表
 				categoryList:[
-					{id:1,title:'家用电器',banner:'/static/img/category/banner.jpg',list:[
-						{name:'冰箱',	img:'1.jpg'},
-						{name:'电视',	img:'2.jpg'},
-						{name:'空调',	img:'3.jpg'},
-						{name:'洗衣机',	img:'4.jpg'},
-						{name:'风扇',	img:'5.jpg'},
-						{name:'燃气灶',	img:'6.jpg'},
-						{name:'热水器',	img:'7.jpg'},
-						{name:'电吹风',	img:'8.jpg'},
-						{name:'电饭煲',	img:'9.jpg'}
+					{id:1,title:'健康检测',banner:'/static/img/category/banner.jpg',list:[
+						{name:'维生素',	img:'1.jpg'},
+						{name:'五谷杂粮',	img:'2.jpg'},
+						{name:'胶原蛋白',	img:'3.jpg'},
+						{name:'户外运动',	img:'4.jpg'},
+						{name:'蔬菜果汁',	img:'5.jpg'},
+						{name:'天然蔬菜',	img:'6.jpg'},
+						{name:'健美塑身',	img:'7.jpg'},
 					]},
-					{id:2,title:'办公用品',banner:'/static/img/category/banner.jpg',list:[
-						{name:'打印机',	img:'1.jpg'},
-						{name:'路由器',	img:'2.jpg'},
-						{name:'扫描仪',	img:'3.jpg'},
-						{name:'投影仪',	img:'4.jpg'},
-						{name:'墨盒',	img:'5.jpg'},
-						{name:'纸类',	img:'6.jpg'}
+					{id:2,title:'健康食品',banner:'/static/img/category/banner.jpg',list:[
+						{name:'五谷杂粮',	img:'2.jpg'},
+						{name:'胶原蛋白',	img:'3.jpg'},
+						{name:'户外运动',	img:'4.jpg'},
+						{name:'蔬菜果汁',	img:'5.jpg'},
+						{name:'天然蔬菜',	img:'6.jpg'},
 					]},
-					{id:3,title:'日常用品',banner:'/static/img/category/banner.jpg',list:[
-						{name:'茶具',	img:'1.jpg'},
-						{name:'花瓶',	img:'2.jpg'},
-						{name:'纸巾',	img:'3.jpg'},
-						{name:'毛巾',	img:'4.jpg'},
-						{name:'牙膏',	img:'5.jpg'},
-						{name:'保鲜膜',	img:'6.jpg'},
-						{name:'保鲜袋',	img:'7.jpg'}
+					{id:3,title:'健康用品',banner:'/static/img/category/banner.jpg',list:[
+						{name:'五谷杂粮',	img:'2.jpg'},
+						{name:'胶原蛋白',	img:'3.jpg'},
+						{name:'蔬菜果汁',	img:'5.jpg'},
+						{name:'天然蔬菜',	img:'6.jpg'},
+						{name:'健美塑身',	img:'7.jpg'},
 					]},
-					{id:4,title:'蔬菜水果',banner:'/static/img/category/banner.jpg',list:[
-						{name:'苹果',	img:'1.jpg'},
-						{name:'芒果',	img:'2.jpg'},
-						{name:'椰子',	img:'3.jpg'},
-						{name:'橙子',	img:'4.jpg'},
-						{name:'奇异果',	img:'5.jpg'},
-						{name:'玉米',	img:'6.jpg'},
-						{name:'百香果',	img:'7.jpg'}
+					{id:4,title:'体育用品',banner:'/static/img/category/banner.jpg',list:[
+						{name:'五谷杂粮',	img:'2.jpg'},
+						{name:'胶原蛋白',	img:'3.jpg'},
+						{name:'户外运动',	img:'4.jpg'},
+						{name:'天然蔬菜',	img:'6.jpg'},
+						{name:'健美塑身',	img:'7.jpg'},
+					]},
+					{id:5,title:'健康服务',banner:'/static/img/category/banner.jpg',list:[
+						{name:'维生素',	img:'1.jpg'},
+						{name:'户外运动',	img:'4.jpg'},
+						{name:'蔬菜果汁',	img:'5.jpg'},
+						{name:'健美塑身',	img:'7.jpg'},
 					]},
 				]
 			}
@@ -102,23 +101,24 @@
 			}
 		},
 		onLoad() {
-			this.amapPlugin = new amap.AMapWX({  
-				//高德地图KEY，随时失效，请务必替换为自己的KEY，参考：http://ask.dcloud.net.cn/article/35070
-				key: '7c235a9ac4e25e482614c6b8eac6fd8e'  
-			});
-			//定位地址
-			this.amapPlugin.getRegeo({  
-				success: (data) => {
-					this.city = data[0].regeocodeData.addressComponent.city.replace(/市/g,'');//把"市"去掉
-				}  
-			}); 
+			// this.amapPlugin = new amap.AMapWX({  
+			// 	//高德地图KEY，随时失效，请务必替换为自己的KEY，参考：http://ask.dcloud.net.cn/article/35070
+			// 	key: '7c235a9ac4e25e482614c6b8eac6fd8e'  
+			// });
+			// //定位地址
+			// this.amapPlugin.getRegeo({  
+			// 	success: (data) => {
+			// 		this.city = data[0].regeocodeData.addressComponent.city.replace(/市/g,'');//把"市"去掉
+			// 	}  
+			// }); 
 		},
 		methods: {
 			//消息列表
 			toMsg(){
-				uni.navigateTo({
-					url:'../../msg/msg'
-				})
+				// uni.navigateTo({
+				// 	url:'../../msg/msg'
+				// })
+				uni.showToast({title: "后期加入客服"});
 			},
 			//分类切换显示
 			showCategory(index){
@@ -132,7 +132,7 @@
 			},
 			//搜索跳转
 			toSearch(){
-				uni.showToast({title: "建议跳转到新页面做搜索功能"});
+				uni.showToast({title: "后期加入搜索"});
 			}
 		}
 	}

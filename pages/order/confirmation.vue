@@ -66,7 +66,7 @@
 					商品金额
 				</view>
 				<view class="content">
-					￥{{goodsPrice|toFixed}}
+					￥{{goodsPrice}}
 				</view>
 			</view>
 			<view class="row">
@@ -82,7 +82,7 @@
 					积分抵扣
 				</view>
 				<view class="content">
-					￥-{{deduction|toFixed}}
+					￥-{{deduction}}
 				</view>
 			</view>
 		</view>
@@ -91,7 +91,7 @@
 		</view>
 		<view class="footer">
 			<view class="settlement">
-				<view class="sum">合计:<view class="money">￥{{sumPrice|toFixed}}</view></view>
+				<view class="sum">合计:<view class="money">￥{{sumPrice}}</view></view>
 				<view class="btn" @tap="toPay">提交订单</view>
 			</view>
 		</view>
@@ -99,6 +99,11 @@
 </template>
 
 <script>
+	// 自定义的 Promise 类型的 http 请求方法,后期需要完善
+	// import api from '@/common/vmeitime-http/'
+	// 本地存储,是用的 vuex 还没有持久化,后期需要加入持久化
+	import { localStorage } from '@/common/js_sdk/mp-storage/mp-storage/index.js'
+
 	export default {
 		data() {
 			return {
@@ -124,9 +129,12 @@
 					let len = this.buylist.length;
 					for(let i=0;i<len;i++){
 						this.goodsPrice = this.goodsPrice + (this.buylist[i].number*this.buylist[i].price);
-					}
+					};
+					console.log(this.goodsPrice);
 					this.deduction = this.int/100;
-					this.sumPrice = this.goodsPrice-this.deduction+this.freight;
+					// this.sumPrice = this.goodsPrice-this.deduction+this.freight;
+					this.sumPrice = 0.10;
+					console.log(this.sumPrice);
 				}
 			});
 			uni.getStorage({
@@ -175,22 +183,47 @@
 					return ;
 				}
 				//本地模拟订单提交UI效果
-				uni.showLoading({
-					title:'正在提交订单...'
-				})
-				setTimeout(()=>{
-					uni.setStorage({
-						key:'paymentOrder',
-						data:paymentOrder,
-						success: () => {
-							uni.hideLoading();
-							uni.redirectTo({
-								url:"../pay/payment/payment?amount="+this.sumPrice
-							})
-						}
+				// uni.showLoading({
+				// 	title:'正在提交订单...'
+				// })
+				// setTimeout(()=>{
+					// uni.setStorage({
+					// 	key:'paymentOrder',
+					// 	data:paymentOrder,
+					// 	success: () => {
+					// 		uni.hideLoading();
+					// 		uni.redirectTo({
+					// 			url:"../pay/payment/payment?amount="+this.sumPrice
+					// 		})
+					// 	}
+					// })
+				// },1000)
+				// 请求付款
+				this.modalName = null
+				// 推荐用法,获取缓存
+				console.log(localStorage.getItem('openid'));
+				this.$api.get("/wx/pay_shop/reqPay",{openid: localStorage.getItem('openid')}).then((res)=>{
+						console.log('request success', res)
+						uni.requestPayment({
+							provider: 'wxpay',
+							timeStamp: res.data.timeStamp,
+							nonceStr: res.data.nonceStr,
+							package: res.data.package,
+							signType: res.data.signType,
+							paySign: res.data.paySign,
+							success: function (res) {
+								uni.navigateTo({
+									url:'/pages/pay/success/success?amount=0.10'
+								});
+							},
+							fail: function (err) {
+								console.log('fail:' + JSON.stringify(err));
+								uni.showToast({title:'支付失敗，请重新购买',icon:'none'});
+							}
+						});
+					}).catch((err)=>{
+						console.log('request fail', err);
 					})
-				},1000)
-				
 			},
 			//选择收货地址
 			selectAddress(){

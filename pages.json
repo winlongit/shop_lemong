@@ -239,6 +239,7 @@
         ,{
             "path" : "pages/pay/success/success",
             "style" : {
+				"navigationStyle":"custom",
 				"navigationBarBackgroundColor":"#ffffff",
 				"navigationBarTitleText":"支付成功",
 				"backgroundColorTop":"#ffffff",

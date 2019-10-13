@@ -30,16 +30,48 @@
 		data() {
 			return {
 				goodsList:[
-					{ goods_id: 0, img: '/static/img/goods/p1.jpg', name: '商品名称商品名称商品名称商品名称商品名称', price: '￥168', slogan:'1235人付款' },
-					{ goods_id: 1, img: '/static/img/goods/p2.jpg', name: '商品名称商品名称商品名称商品名称商品名称', price: '￥168', slogan:'1235人付款' },
-					{ goods_id: 2, img: '/static/img/goods/p3.jpg', name: '商品名称商品名称商品名称商品名称商品名称', price: '￥168', slogan:'1235人付款' },
-					{ goods_id: 3, img: '/static/img/goods/p4.jpg', name: '商品名称商品名称商品名称商品名称商品名称', price: '￥168', slogan:'1235人付款' },
-					{ goods_id: 4, img: '/static/img/goods/p5.jpg', name: '商品名称商品名称商品名称商品名称商品名称', price: '￥168', slogan:'1235人付款' },
-					{ goods_id: 5, img: '/static/img/goods/p6.jpg', name: '商品名称商品名称商品名称商品名称商品名称', price: '￥168', slogan:'1235人付款' },
-					{ goods_id: 6, img: '/static/img/goods/p7.jpg', name: '商品名称商品名称商品名称商品名称商品名称', price: '￥168', slogan:'1235人付款' },
-					{ goods_id: 7, img: '/static/img/goods/p8.jpg', name: '商品名称商品名称商品名称商品名称商品名称', price: '￥168', slogan:'1235人付款' },
-					{ goods_id: 8, img: '/static/img/goods/p9.jpg', name: '商品名称商品名称商品名称商品名称商品名称', price: '￥168', slogan:'1235人付款' },
-					{ goods_id: 9, img: '/static/img/goods/p10.jpg', name: '商品名称商品名称商品名称商品名称商品名称', price: '￥168', slogan:'1235人付款' }
+				{
+					goods_id: 1,
+					img: '/static/img/goods/pp1.jpg',
+					name: '美容美白基因检测',
+					price: '￥0.01',
+					slogan: '12356人付款'
+				},
+				{
+					goods_id: 2,
+					img: '/static/img/goods/pp2.jpg',
+					name: '百年宫燕即食燕窝',
+					price: '￥0.01',
+					slogan: '123人付款'
+				},
+				{
+					goods_id: 3,
+					img: '/static/img/goods/pp3.jpg',
+					name: '仁医师马油酵素面霜100ml',
+					price: '￥1688',
+					slogan: '1868人付款'
+				},
+				{
+					goods_id: 4,
+					img: '/static/img/goods/pp4.jpg',
+					name: '运动卫衣',
+					price: '￥168',
+					slogan: '1235人付款'
+				},
+				{
+					goods_id: 5,
+					img: '/static/img/goods/pp4.jpg',
+					name: '运动卫衣',
+					price: '￥168',
+					slogan: '1235人付款'
+				},
+				{
+					goods_id: 6,
+					img: '/static/img/goods/pp4.jpg',
+					name: '运动卫衣',
+					price: '￥168',
+					slogan: '1235人付款'
+				},
 				],
 				loadingText:"正在加载...",
 				headerTop:"0px",
@@ -89,16 +121,16 @@
 		onReachBottom(){
 			uni.showToast({title: '触发上拉加载'});
 			let len = this.goodsList.length;
-			if(len>=40){
+			if(len>=8){
 				this.loadingText="到底了";
 				return false;
 			}else{
 				this.loadingText="正在加载...";
 			}
 			let end_goods_id = this.goodsList[len-1].goods_id;
-			for(let i=1;i<=10;i++){
+			for(let i=1;i<=4;i++){
 				let goods_id = end_goods_id+i;
-				let p = { goods_id: goods_id, img: '/static/img/goods/p'+(goods_id%10==0?10:goods_id%10)+'.jpg', name: '商品名称商品名称商品名称商品名称商品名称', price: '￥168', slogan:'1235人付款' };
+				let p = { goods_id: goods_id, img: '/static/img/goods/pp'+(goods_id%4==0?4:goods_id%4)+'.jpg', name: '商品名称商品名称商品名称商品名称商品名称', price: '￥168', slogan:'1235人付款' };
 				this.goodsList.push(p);
 			}
 		},
@@ -110,7 +142,7 @@
 				let end_goods_id = 0;
 				for(let i=1;i<=10;i++){
 					let goods_id = end_goods_id+i;
-					let p = { goods_id: goods_id, img: '/static/img/goods/p'+(goods_id%10==0?10:goods_id%10)+'.jpg', name: '商品名称商品名称商品名称商品名称商品名称', price: '￥168', slogan:'1235人付款' };
+					let p = { goods_id: goods_id, img: '/static/img/goods/pp'+(goods_id%10==0?10:goods_id%10)+'.jpg', name: '商品名称商品名称商品名称商品名称商品名称', price: '￥168', slogan:'1235人付款' };
 					this.goodsList.push(p);
 				}
 			},
@@ -182,10 +214,8 @@
 		}
 	}
 .place{
-		
 		background-color: #ffffff;
 		height: 100upx;
-
 	}
 .goods-list{
 		.loading-text{

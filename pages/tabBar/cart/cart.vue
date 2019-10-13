@@ -79,11 +79,10 @@
 				selectedList:[],
 				isAllselected:false,
 				goodsList:[
-					{id:1,img:'/static/img/goods/p1.jpg',name:'商品标题商品标题商品标题商品标题商品标题商品标题商品标题商品标题商品标题商品标题',spec:'规格:S码',price:127.5,number:1,selected:false},
-					{id:2,img:'/static/img/goods/p2.jpg',name:'商品标题商品标题商品标题商品标题商品标题商品标题商品标题商品标题商品标题商品标题',spec:'规格:S码',price:127.5,number:1,selected:false},
-					{id:3,img:'/static/img/goods/p3.jpg',name:'商品标题商品标题商品标题商品标题商品标题商品标题商品标题商品标题商品标题商品标题',spec:'规格:S码',price:127.5,number:1,selected:false},
-					{id:4,img:'/static/img/goods/p4.jpg',name:'商品标题商品标题商品标题商品标题商品标题商品标题商品标题商品标题商品标题商品标题',spec:'规格:S码',price:127.5,number:1,selected:false},
-					{id:5,img:'/static/img/goods/p5.jpg',name:'商品标题商品标题商品标题商品标题商品标题商品标题商品标题商品标题商品标题商品标题',spec:'规格:S码',price:127.5,number:1,selected:false}
+					{id: 1,img: '/static/img/goods/pp1.jpg',name: '美容美白基因检测',spec:'规格:美白定制',price:0.01,number:1,selected:false},
+					{id: 2,img: '/static/img/goods/pp2.jpg',name: '百年宫燕即食燕窝',spec:'规格:100ml',price:0.01,number:1,selected:false},
+					{id: 3,img: '/static/img/goods/pp3.jpg',name: '仁医师马油酵素面霜',spec:'规格:100ml',price:1688,number:1,selected:false},
+					{id: 4,img: '/static/img/goods/pp4.jpg',name: '运动卫衣',spec:'规格:S码',price:168,number:1,selected:false},
 				],
 				//控制滑动效果
 				theIndex:null,

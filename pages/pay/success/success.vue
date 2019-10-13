@@ -1,5 +1,8 @@
 <template>
 	<view>
+		<view class="status_bar"><!-- 这里是状态栏 --></view>
+		<!-- 占位 -->
+		<view class="place"></view>
 		<view class="icon">
 			<image src="/static/img/success.png"></image>
 		</view>
@@ -28,7 +31,7 @@
 		methods: {
 			toUser() {
 				uni.switchTab({
-					url: '/pages/tabBar/user'
+					url: '/pages/tabBar/user/user'
 				});
 			}
 		},
@@ -73,4 +76,12 @@
 		font-size: 34upx;
 	}
 }
+.status_bar {
+  height: var(--status-bar-height);
+  width: 100%;
+}
+.place{
+		background-color: #ffffff;
+		height: 100upx;
+	}
 </style>
