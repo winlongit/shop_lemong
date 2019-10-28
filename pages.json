@@ -33,6 +33,7 @@
 			"style": {
 				"enablePullDownRefresh": true,
 				"navigationBarTextStyle":"black",
+				"navigationBarTitleText":"购物车",
 				"app-plus": {
 					"titleNView": false ,//禁用原生导航栏
 					"softinputNavBar":"none",
@@ -259,7 +260,7 @@
     ],
 	"globalStyle": {
 		"navigationBarTextStyle": "black",
-		"navigationBarTitleText" : "",
+		"navigationBarTitleText" : "健康商城",
 		"navigationBarBackgroundColor" : "#ffffff",
 		"backgroundColor" : "#ffffff",
 		"backgroundColorTop":"#ffffff",

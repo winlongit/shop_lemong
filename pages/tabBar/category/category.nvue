@@ -53,7 +53,7 @@ const dom = weex.requireModule('dom') || {};
 export default {
 	data() {
 		return {
-			city: '北京',
+			city: '南京',
 			subNVue: uni.getCurrentSubNVue(),
 			iconSearch: '\ue628',
 			iconLocation: '\ue611',

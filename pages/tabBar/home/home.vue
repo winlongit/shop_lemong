@@ -126,7 +126,7 @@ export default {
 			headerTop:null,
 			statusTop:null,
 			nVueTitle:null,
-			city: '北京',
+			city: '南京',
 			currentSwiper: 0,
 			// 轮播图片
 			swiperList: [
@@ -136,14 +136,11 @@ export default {
 			],
 			// 分类菜单
 			categoryList: [
-				{ id: 1, name: '减肥', img: '/static/img/category/1.png' },
-				{ id: 2, name: '塑身', img: '/static/img/category/2.png' },
-				{ id: 3, name: '美容', img: '/static/img/category/3.png' },
-				{ id: 4, name: '护肤', img: '/static/img/category/4.png' },
-				{ id: 5, name: '基因检测', img: '/static/img/category/5.png' },
-				{ id: 6, name: '保健', img: '/static/img/category/6.png' },
-				{ id: 7, name: '养身', img: '/static/img/category/7.png' },
-				{ id: 8, name: '燕窝', img: '/static/img/category/8.png' }
+				{ id: 1, name: '健康检测', img: '/static/img/category/dna.png' },
+				{ id: 2, name: '健康食品', img: '/static/img/category/vegetable.png' },
+				{ id: 3, name: '健康用品', img: '/static/img/category/use.png' },
+				{ id: 4, name: '体育用品', img: '/static/img/category/sport.png' },
+				{ id: 5, name: '健康服务', img: '/static/img/category/fitness.png' },
 			],
 			Promotion: [],
 			//猜你喜欢列表

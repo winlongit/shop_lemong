@@ -2,12 +2,12 @@
 	<view>
 		<view class="status" :style="{ opacity: afterHeaderOpacity }"></view>
 		<view class="header">
-			<!-- 头部-默认显示 -->
+			<!-- 头部-默认显示 右上角购物车-->
 			<view class="before" :style="{ opacity: 1 - afterHeaderOpacity, zIndex: beforeHeaderzIndex }">
 				<view class="back"><view class="icon xiangqian" @tap="back" v-if="showBack"></view></view> 
 				<view class="middle"></view>
 				<view class="icon-btn">
-					<view class="icon tongzhi" @tap="toMsg"></view>
+					<!-- <view class="icon tongzhi" @tap="toMsg"></view> -->
 					<!-- 加入购物车 -->
 					<view class="icon cart" @tap="joinCart"></view>
 				</view>
@@ -19,7 +19,7 @@
 					<view v-for="(anchor,index) in anchorlist" :class="[selectAnchor==index ?'on':'']" :key="index" @tap="toAnchor(index)">{{anchor.name}}</view>
 				</view>
 				<view class="icon-btn">
-					<view class="icon tongzhi" @tap="toMsg"></view>
+					<!-- <view class="icon tongzhi" @tap="toMsg"></view> -->
 					<!-- 加入购物车 -->
 					<view class="icon cart" @tap="joinCart"></view>
 				</view>

@@ -50,43 +50,27 @@
 			return {
 				showCategoryIndex:0,
 				headerPosition:"fixed",
-				city:"北京",
+				city:"南京",
 				//分类列表
 				categoryList:[
 					{id:1,title:'健康检测',banner:'/static/img/category/banner.jpg',list:[
+						{name:'基因检测',	img:'dna.jpg'},
+					]},
+					{id:2,title:'健康食品',banner:'http://tva1.sinaimg.cn/large/007X8olVly1g78q4whwhgj30ku06yq49.jpg',list:[
 						{name:'维生素',	img:'1.jpg'},
 						{name:'五谷杂粮',	img:'2.jpg'},
 						{name:'胶原蛋白',	img:'3.jpg'},
-						{name:'户外运动',	img:'4.jpg'},
-						{name:'蔬菜果汁',	img:'5.jpg'},
-						{name:'天然蔬菜',	img:'6.jpg'},
-						{name:'健美塑身',	img:'7.jpg'},
+						{name:'天然果汁',	img:'5.jpg'},
+						{name:'绿色蔬菜',	img:'6.jpg'},
 					]},
-					{id:2,title:'健康食品',banner:'/static/img/category/banner.jpg',list:[
-						{name:'五谷杂粮',	img:'2.jpg'},
-						{name:'胶原蛋白',	img:'3.jpg'},
-						{name:'户外运动',	img:'4.jpg'},
-						{name:'蔬菜果汁',	img:'5.jpg'},
-						{name:'天然蔬菜',	img:'6.jpg'},
-					]},
-					{id:3,title:'健康用品',banner:'/static/img/category/banner.jpg',list:[
-						{name:'五谷杂粮',	img:'2.jpg'},
-						{name:'胶原蛋白',	img:'3.jpg'},
-						{name:'蔬菜果汁',	img:'5.jpg'},
-						{name:'天然蔬菜',	img:'6.jpg'},
-						{name:'健美塑身',	img:'7.jpg'},
+					{id:3,title:'健康用品',banner:'http://tva1.sinaimg.cn/large/007X8olVly1g78q5211efj30ku06y74m.jpg',list:[
+						{name:'养生壶',	img:'yangshenghu.jpg'},
 					]},
 					{id:4,title:'体育用品',banner:'/static/img/category/banner.jpg',list:[
-						{name:'五谷杂粮',	img:'2.jpg'},
-						{name:'胶原蛋白',	img:'3.jpg'},
-						{name:'户外运动',	img:'4.jpg'},
-						{name:'天然蔬菜',	img:'6.jpg'},
-						{name:'健美塑身',	img:'7.jpg'},
+						{name:'网球拍',	img:'qiupai.jpg'},
 					]},
 					{id:5,title:'健康服务',banner:'/static/img/category/banner.jpg',list:[
-						{name:'维生素',	img:'1.jpg'},
 						{name:'户外运动',	img:'4.jpg'},
-						{name:'蔬菜果汁',	img:'5.jpg'},
 						{name:'健美塑身',	img:'7.jpg'},
 					]},
 				]
